@@ -1,4 +1,5 @@
 
+
 //API//////////////////////////////////////////////////////////////////////////////////////
 
 //Trail API for information
@@ -36,3 +37,24 @@ var requestOptions = {
   fetch("api.openweathermap.org/data/2.5/forecast?q=Denver&appid=61bd5a7935f37e9c18cacd14e8c89bc3", requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
+=======
+// Query variables
+var userLocation = document.querySelector('#input');
+
+
+// Location submit handler
+
+
+//Function to get Hiking Api
+
+
+//Funtion to get weather api
+
+
+//Print Trail Location rout
+
+//Print weather results in cards
+
+
+//
+
