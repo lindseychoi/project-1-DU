@@ -1,0 +1,42 @@
+* {
+    background-color: #1a864d;
+}
+
+.button {
+    border-color: black;
+    color: black;
+    cursor: auto;
+    justify-content: center;
+    margin-left: 45%;
+    text-align: center;
+}
+
+.input {
+    border-color: black;
+    border-style: solid;
+    border-width: thin;
+    color: black;
+}
+
+/* .outdoors {
+  height: 400px;
+  position: relative;
+  padding-left: 23%;
+  width: 75%;
+} */
+
+.subtitle {
+    color: black;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+    width: 60%;
+}
+
+.title {
+    color: black;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+    width: 60%;
+}
