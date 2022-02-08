@@ -2,34 +2,35 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <link rel="stylesheet" href="./style.css">
-    <title>PROJECT 1</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="./style.css">
+  <title>PROJECT 1</title>
 </head>
 
 <body>
-    <section class="hero">
-        <div class="hero-body">
-          <p class="title">
-            Take A Hike!
-          </p>
-          <p class="subtitle">
-            Search for you favorite Colorado hike below and find current weather conditions, a five-day forecast, and detailed information about your chosen destination. Be prepared for your adventure into the great outdoors!
-          </p>
-        </div>
-      </section>
-      <!-- This section is blue -->
-      <section class="hero is-info">
-        <div class="hero-body">
-        <!-- padding for input here to make it so that the input and search button have space in between them. I think Lindsey did this on the last project example attempt -->
-        <input class="input is-medium" type="text" placeholder="Search by city,state, country">  <button class="button is-medium">Search</button>
-    
+  <section class="hero">
+    <div class="hero-body">
+      <p class="title">
+        Take A Hike!
+      </p>
+      <p class="subtitle">
+        Search for you favorite Colorado hike below and find current weather conditions, a five-day forecast, and
+        detailed information about your chosen destination. Be prepared for your adventure into the great outdoors!
+      </p>
     </div>
-    </section>
+  </section>
+  <!-- This section is blue -->
+  <section class="hero is-info">
+    <div class="hero-body">
+      <!-- padding for input here to make it so that the input and search button have space in between them. I think Lindsey did this on the last project example attempt -->
+      <input class="input is-medium" id="input-box" type="text">
+      <button class="button is-medium" id="search_button">Search</button>
+    </div>
 
+<<<<<<< HEAD
 <!-- This section is also blue -->
     <section class="hero is-large is-info">
         <div class="inspire hero-body" hidden>
@@ -45,6 +46,25 @@
 <!-- Results and 5 day forecast -->
 <section class="hero is-medium is-link">
     <div class="hero-body" >
+=======
+  </section>
+
+  <!-- This section is also blue -->
+  <section class="hero is-small is-info">
+    <div class="inspire hero-body">
+      <p class="title">
+        Inspiring Quote
+      </p>
+      <p class="subtitle">
+        Inspiring Quote Author
+      </p>
+    </div>
+  </section>
+
+  <!-- Results and 5 day forecast -->
+  <section class="hero is-small is-link">
+    <div class="hero-body">
+>>>>>>> 240a4c3a920517ba0017ac8ab1b4a1b2aac6c973
       <p class="title">
         Results Title
       </p>
@@ -53,6 +73,7 @@
       </p>
     </div>
   </section>
+<<<<<<< HEAD
   <div class="columns is-desktop">
     <div class="column"><div class="card" >
         <div class="card-content">
@@ -110,14 +131,93 @@
       </div>
 
 
+=======
+
+  <!-- five day forecast-->
+
+  <div class="column">
+    <div class="card">
+      <div class="card-content">
+        <div class="content" id="day-0-date">
+          <h1>Date</h1>
+          <ul>
+            <li id="day-0-icon">Description:</li>
+            <li id="day-0-temp">Temp:</li>
+            <li id="day-0-wind">Wind:</li>
+            <li id="day-0-humidity">Humidity:</li>
+        </div>
+      </div>
+>>>>>>> 240a4c3a920517ba0017ac8ab1b4a1b2aac6c973
     </div>
   </div>
 
+  <div class="column">
+    <div class="card">
+      <div class="card-content">
+        <div class="content" id="day-1-date">
+          <h1>Date</h1>
+          <ul>
+            <li id="day-1-icon">Description:</li>
+            <li id="day-1-temp">Temp:</li>
+            <li id="day-1-wind">Wind:</li>
+            <li id="day-1-humidity">Humidity:</li>
+        </div>
+      </div>
+    </div>
 
-      
+    <div class="column">
+      <div class="card">
+        <div class="card-content">
+          <div class="content" id="day-2-date">
+            <h1>Date</h1>
+            <ul>
+              <li id="day-2-icon">Description:</li>
+              <li id="day-2-temp">Temp:</li>
+              <li id="day-2-wind">Wind:</li>
+              <li id="day-2-humidity">Humidity:</li>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="card">
+        <div class="card-content">
+          <div class="content" id="day-3-date">
+            <h1>Date</h1>
+            <ul>
+              <li id="day-3-icon">Description:</li>
+              <li id="day-3-temp">Temp:</li>
+              <li id="day-3-wind">Wind:</li>
+              <li id="day-3-humidity">Humidity:</li>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="card">
+        <div class="card-content">
+          <div class="content" id="day-4-date">
+            <h1>Date</h1>
+            <ul>
+              <li id="day-4-icon">Description:</li>
+              <li id="day-4-temp">Temp:</li>
+              <li id="day-4-wind">Wind:</li>
+              <li id="day-4-humidity">Humidity:</li>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
 
 
+
+
+
+<script src="./script.js"></script>
 </body>
 
 </html>
-
