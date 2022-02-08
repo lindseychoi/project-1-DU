@@ -11,6 +11,55 @@
     text-align: center;
 }
 
+.card, .column  {
+    align-items: center;
+    /* border-width: thin; */
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    margin-left: 7%;
+    margin-right: 17%;
+
+}
+
+.content {
+    /* border-width: thin; */
+    color: black;
+    padding: 10%;
+}
+
+.content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
+    /* border-width: thin; */
+    color: black;
+    font-weight: 600;
+    line-height: 1.125;
+}
+
+.hero.is-info .subtitle {
+    color: black;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+    width: 60%;
+}
+
+.hero.is-info .title {
+    color: black;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+    width: 60%;
+}
+
+.hero.is-link .subtitle {
+    color: black;
+}
+
+.hero.is-link .title {
+    color: black;
+}
+
 .input {
     border-color: black;
     border-style: solid;
