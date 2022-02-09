@@ -22,6 +22,7 @@ const openWeatherAPIKey = "61bd5a7935f37e9c18cacd14e8c89bc3";
 // 	console.error(err);
 // });
 
+
 //Need API to convert what is inputted and searched to LATITUDE and LONGITUDE; this is the Open Cage Geocoding API 
 // var requestOptions = {
 //     method: 'GET',
@@ -64,17 +65,23 @@ async function drawFiveDayForecast(data) {
   console.log(data);
   index = 0 
   
+  
   //5 day forecast date information
   var dayZeroDate = document.getElementById("day-0-date");
-  dayZeroDate.innerHTML = data[index].dt_txt;
-  var dayOneDate = document.getElementById("day-1-date");
-  dayOneDate.innerHTML = data[index+8].dt_txt;
-  var dayTwoDate = document.getElementById("day-2-date");
-  dayTwoDate.innerHTML = data[index+16].dt_txt;
-  var dayThreeDate = document.getElementById("day-3-date");
-  dayThreeDate.innerHTML = data[index+24].dt_txt;
-  var dayFourDate = document.getElementById("day-4-date");
-  dayFourDate.innerHTML = data[index+36].dt_txt;
+    dayZero = data[index].dt;
+    dayZeroDate.innerHTML = moment(new Date(dayZero * 1000)).format("L");
+    var dayOneDate = document.getElementById("day-1-date");
+    dayOne = data[index+8].dt;
+    dayOneDate.innerHTML = moment(new Date(dayOne * 1000)).format("L");
+    var dayTwoDate = document.getElementById("day-2-date");
+    dayTwo = data[index+16].dt;
+    dayTwoDate.innerHTML = moment(new Date(dayTwo * 1000)).format("L");
+    var dayThreeDate = document.getElementById("day-3-date");
+    dayThree = data[index+24].dt;
+    dayThreeDate.innerHTML = moment(new Date(dayThree * 1000)).format("L");
+    var dayFourDate = document.getElementById("day-4-date");
+    dayFour = data[index+32].dt;
+    dayFourDate.innerHTML = moment(new Date(dayFour * 1000)).format("L");
 
   //5 day forecast temp information
   var dayZeroTemp = document.getElementById("day-0-temp");
