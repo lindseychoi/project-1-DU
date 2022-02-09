@@ -37,9 +37,7 @@ async function getLatitudeLongitude(city) {
   var results = await fetch(url, requestOptions);
   console.log("open cage api");
   return await results.json();
-
-   
-  }
+}
 
 
 
@@ -66,8 +64,7 @@ async function search() {
   console.log(forecastData);
   drawFiveDayForecast(forecastData.list);
   var latitudeLongitude = await getLatitudeLongitude(cityName);
-  console.log(latitudeLongitude)
-  getLatitudeLongitude(latitudeLongitude.results);
+  console.log(latitudeLongitude.results);
 }
 
 //the following function will render the five day forecast for the searched city
