@@ -4,122 +4,91 @@ const searchButton = document.getElementById("search_button");
 const userLocation = document.querySelector('#input');
 const openWeatherAPIKey = "61bd5a7935f37e9c18cacd14e8c89bc3";
 const openCageAPIKey = "0148c7965c584dfc849607c4be6c640b";
+const trailApiKey = "d0940ee964msh728cc5d9f2642bap1a36ccjsne2e0b86173ec";
+
 
 //API//////////////////////////////////////////////////////////////////////////////////////
 
 
 //Trail API for information
 
-searchButton.addEventListener("click", function() {
+async function getTrails(latitude, longitude) {
+  console.log("trail api activated");
 
+  var url = "https://trailapi-trailapi.p.rapidapi.com/trails/explore/?lat=" +latitude + "&lon=" + longitude;
 
-    //Need API to convert what is inputted and searched to LATITUDE and LONGITUDE; this is the Open Cage Geocoding API 
-    // var requestOptions = {
-    //     method: 'GET',
-    //     redirect: 'follow'
-    //   };
-
-    //   fetch("https://api.opencagedata.com/geocode/v1/json?q=Denver&key=0148c7965c584dfc849607c4be6c640b", requestOptions)
-    //     .then(response => response.text())
-    //     .then(result => console.log(result))
-    //     .catch(error => console.log('error', error));
-
-    var lattitude = data
-
-    var trailApiKey = "d0940ee964msh728cc5d9f2642bap1a36ccjsne2e0b86173ec";
-    var trailUrl = "trailapi-trailapi.p.rapidapi.com/trails/explore/?lat=" + lattitude + "&lon=" + longitude + "&radius=" + radius;
-
-
-    fetch(trailUrl)
-
-    .then(response => {
-            console.log(response);
-            displayTrails();
-        })
-        .catch(err => {
-            console.error(err);
-        });
-
-})
-
-
-function displayTrails() {
-
-
-
-
-}
-// fetch("https://trailapi-trailapi.p.rapidapi.com/trails/explore/?lat=null&lon=null", {
-// 	"method": "GET",
-// 	"headers": {
-// 		"x-rapidapi-host": "trailapi-trailapi.p.rapidapi.com",
-// 		"x-rapidapi-key": "d0940ee964msh728cc5d9f2642bap1a36ccjsne2e0b86173ec"
-// 	}
-// })
-// .then(response => {
-// 	console.log(response);
-// })
-// .catch(err => {
-// 	console.error(err);
-// });
-
-
-//Need API to convert what is inputted and searched to LATITUDE and LONGITUDE; this is the Open Cage Geocoding API 
-async function getLatitudeLongitude(city) {
-  
-  var url = "https://api.opencagedata.com/geocode/v1/json?q=" + city + "&key=" + openCageAPIKey;
-  
   var requestOptions = {
+    method: "GET",
+    headers: {
+      "x-rapidapi-host": "trailapi-trailapi.p.rapidapi.com",
+      "x-rapidapi-key": "d0940ee964msh728cc5d9f2642bap1a36ccjsne2e0b86173ec"
+    }
+  }
+  
+  var response = await fetch(url, requestOptions);
+  return await response.json();
+
+  }
+
+  //Need API to convert what is inputted and searched to LATITUDE and LONGITUDE; this is the Open Cage Geocoding API 
+  async function getLatitudeLongitude(city) {
+
+    var url = "https://api.opencagedata.com/geocode/v1/json?q=" + city + "&key=" + openCageAPIKey;
+    //console.log();
+    var requestOptions = {
       method: 'GET',
       redirect: 'follow'
     };
-  
-  var results = await fetch(url, requestOptions);
-  console.log("open cage api");
-  return await results.json();
-}
 
+    var results = await fetch(url, requestOptions);
+    console.log("open cage api");
+    return await results.json();
 
+  }
 
-
-//5 day weather forecast from Open Weather, calls by city name ONLY//needs work...
-async function getFiveDayForecast(cityName) {
+  //5 day weather forecast from Open Weather, calls by city name ONLY//needs work...
+  async function getFiveDayForecast(cityName) {
 
     var url = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + openWeatherAPIKey + "&units=imperial";
 
     var requestOptions = {
-        method: 'GET',
-        redirect: 'follow'
+      method: 'GET',
+      redirect: 'follow'
     };
 
     var results = await fetch(url, requestOptions);
     return await results.json();
 
-}
+  }
 
-//the following function will be performed when search is clicked (event listener at bottom in the logic portion)
-async function search() {
+  //the following function will be performed when search is clicked (event listener at bottom in the logic portion)
+  async function search() {
 
-  console.log("search is ran");
-  const cityName = searchInputBox.value.trim();
-  var forecastData = await getFiveDayForecast(cityName);
-  console.log(forecastData);
-  drawFiveDayForecast(forecastData.list);
-  var latitudeLongitude = await getLatitudeLongitude(cityName);
-  console.log(latitudeLongitude.results);
+    console.log("search is ran");
+    const cityName = searchInputBox.value.trim();
+    var forecastData = await getFiveDayForecast(cityName);
+    //console.log(forecastData);
+    drawFiveDayForecast(forecastData.list);
+    var latitudeLongitude = await getLatitudeLongitude(cityName);
+    console.log(latitudeLongitude.results);
+    var latitude = latitudeLongitude.results[0].geometry;
+    const {lat,lng} = latitude;
+    console.log(latitude);
+    var trailInfo = await getTrails(lat, lng);
+    console.log(trailInfo);
 
-}
+  }
 
-//the following function will render the five day forecast for the searched city
-async function drawFiveDayForecast(data) {
+  //the following function will render the five day forecast for the searched city
+  async function drawFiveDayForecast(data) {
 
-  console.log("drawFiveDayForecast is working: ");
-  //console.log(data);
-  index = 0 
-  
-  
-  //5 day forecast date information
-  var dayZeroDate = document.getElementById("day-0-date");
+    console.log("drawFiveDayForecast is working: ");
+    //console.log(data);
+    index = 0
+
+
+    //5 day forecast date information
+    var dayZeroDate = document.getElementById("day-0-date");
 
     dayZero = data[index].dt;
     dayZeroDate.innerHTML = moment(new Date(dayZero * 1000)).format("L");
@@ -185,15 +154,15 @@ async function drawFiveDayForecast(data) {
     var dayFourIcon = document.getElementById("day-4-icon");
     dayFourIcon.innerHTML = data[index + 36].weather[index].description;;
 
-}
+  }
 
-$(document).ready(async function() {
+  $(document).ready(async function () {
 
     searchButton.addEventListener('click', search);
     searchInputBox.value = "Denver";
     search();
 
-});
+  });
 
 
 // Location submit handler
