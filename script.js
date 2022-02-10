@@ -3,11 +3,13 @@ const searchInputBox = document.getElementById("input-box");
 const searchButton = document.getElementById("search_button");
 const userLocation = document.querySelector('#input');
 const openWeatherAPIKey = "61bd5a7935f37e9c18cacd14e8c89bc3";
+const openCageAPIKey = "0148c7965c584dfc849607c4be6c640b";
 
 //API//////////////////////////////////////////////////////////////////////////////////////
 
 
 //Trail API for information
+
 searchButton.addEventListener("click", function() {
 
 
@@ -47,6 +49,38 @@ function displayTrails() {
 
 
 }
+// fetch("https://trailapi-trailapi.p.rapidapi.com/trails/explore/?lat=null&lon=null", {
+// 	"method": "GET",
+// 	"headers": {
+// 		"x-rapidapi-host": "trailapi-trailapi.p.rapidapi.com",
+// 		"x-rapidapi-key": "d0940ee964msh728cc5d9f2642bap1a36ccjsne2e0b86173ec"
+// 	}
+// })
+// .then(response => {
+// 	console.log(response);
+// })
+// .catch(err => {
+// 	console.error(err);
+// });
+
+
+//Need API to convert what is inputted and searched to LATITUDE and LONGITUDE; this is the Open Cage Geocoding API 
+async function getLatitudeLongitude(city) {
+  
+  var url = "https://api.opencagedata.com/geocode/v1/json?q=" + city + "&key=" + openCageAPIKey;
+  
+  var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+  
+  var results = await fetch(url, requestOptions);
+  console.log("open cage api");
+  return await results.json();
+}
+
+
+
 
 //5 day weather forecast from Open Weather, calls by city name ONLY//needs work...
 async function getFiveDayForecast(cityName) {
@@ -65,23 +99,28 @@ async function getFiveDayForecast(cityName) {
 
 //the following function will be performed when search is clicked (event listener at bottom in the logic portion)
 async function search() {
-    console.log("search is ran");
-    const cityName = searchInputBox.value.trim();
-    var forecastData = await getFiveDayForecast(cityName);
-    console.log(forecastData);
-    drawFiveDayForecast(forecastData.list);
+
+  console.log("search is ran");
+  const cityName = searchInputBox.value.trim();
+  var forecastData = await getFiveDayForecast(cityName);
+  console.log(forecastData);
+  drawFiveDayForecast(forecastData.list);
+  var latitudeLongitude = await getLatitudeLongitude(cityName);
+  console.log(latitudeLongitude.results);
 
 }
 
 //the following function will render the five day forecast for the searched city
 async function drawFiveDayForecast(data) {
-    console.log("drawFiveDayForecast is working: ");
-    console.log(data);
-    index = 0
 
+  console.log("drawFiveDayForecast is working: ");
+  //console.log(data);
+  index = 0 
+  
+  
+  //5 day forecast date information
+  var dayZeroDate = document.getElementById("day-0-date");
 
-    //5 day forecast date information
-    var dayZeroDate = document.getElementById("day-0-date");
     dayZero = data[index].dt;
     dayZeroDate.innerHTML = moment(new Date(dayZero * 1000)).format("L");
     var dayOneDate = document.getElementById("day-1-date");
