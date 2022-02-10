@@ -4,6 +4,7 @@ const searchInputBox = document.getElementById("input-box");
 const searchButton = document.getElementById("search_button");
 const userLocation = document.querySelector('#input');
 const openWeatherAPIKey = "61bd5a7935f37e9c18cacd14e8c89bc3";
+const openCageAPIKey = "0148c7965c584dfc849607c4be6c640b";
 
 //API//////////////////////////////////////////////////////////////////////////////////////
 
@@ -24,15 +25,21 @@ const openWeatherAPIKey = "61bd5a7935f37e9c18cacd14e8c89bc3";
 
 
 //Need API to convert what is inputted and searched to LATITUDE and LONGITUDE; this is the Open Cage Geocoding API 
-// var requestOptions = {
-//     method: 'GET',
-//     redirect: 'follow'
-//   };
+async function getLatitudeLongitude(city) {
   
-//   fetch("https://api.opencagedata.com/geocode/v1/json?q=Denver&key=0148c7965c584dfc849607c4be6c640b", requestOptions)
-//     .then(response => response.text())
-//     .then(result => console.log(result))
-//     .catch(error => console.log('error', error));
+  var url = "https://api.opencagedata.com/geocode/v1/json?q=" + city + "&key=" + openCageAPIKey;
+  
+  var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+  
+  var results = await fetch(url, requestOptions);
+  console.log("open cage api");
+  return await results.json();
+}
+
+
 
 //5 day weather forecast from Open Weather, calls by city name ONLY//needs work...
 async function getFiveDayForecast(cityName) {
@@ -56,13 +63,14 @@ async function search() {
   var forecastData = await getFiveDayForecast(cityName);
   console.log(forecastData);
   drawFiveDayForecast(forecastData.list);
-  
+  var latitudeLongitude = await getLatitudeLongitude(cityName);
+  console.log(latitudeLongitude.results);
 }
 
 //the following function will render the five day forecast for the searched city
 async function drawFiveDayForecast(data) {
   console.log("drawFiveDayForecast is working: ");
-  console.log(data);
+  //console.log(data);
   index = 0 
   
   
