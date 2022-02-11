@@ -30,7 +30,8 @@ async function getTrails(latitude, longitude) {
 
   }
 
-  //Need API to convert what is inputted and searched to LATITUDE and LONGITUDE; this is the Open Cage Geocoding API 
+  //Need API to convert what is inputted and searched to LATITUDE and LONGITUDE; this is the Open Cage Geocoding API
+  // TODO: state, country as parameters
   async function getLatitudeLongitude(city) {
 
     var url = "https://api.opencagedata.com/geocode/v1/json?q=" + city + "&key=" + openCageAPIKey;
@@ -165,18 +166,3 @@ async function getTrails(latitude, longitude) {
   });
 
 
-// Location submit handler
-
-
-//Function to get Hiking Api
-
-
-//Funtion to get weather api
-
-
-//Print Trail Location rout
-
-//Print weather results in cards
-
-
-//
