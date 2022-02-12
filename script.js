@@ -35,9 +35,9 @@ async function getTrails(latitude, longitude) {
 
 //Open Cage API changes the city name to latitude and longitude, which was necessary for the Trail API.
 // TODO: In the future, we would like to narrow the search down to use state, country as parameters so that user gets the information for the exact location they want.
-async function getLatitudeLongitude(city) {
+async function getLatitudeLongitude(queryString) {
 
-  var url = "https://api.opencagedata.com/geocode/v1/json?q=" + city + "&key=" + openCageAPIKey;
+  var url = "https://api.opencagedata.com/geocode/v1/json?q=" + queryString + "&key=" + openCageAPIKey;
   //console.log();
   var requestOptions = {
     method: 'GET',
@@ -51,9 +51,9 @@ async function getLatitudeLongitude(city) {
 }
 
 //5 day weather forecast from Open Weather, calls by city name.
-async function getFiveDayForecast(cityName) {
+async function getFiveDayForecast(lat, long) {
 
-  var url = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + openWeatherAPIKey + "&units=imperial";
+  var url = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + long + "&appid=" + openWeatherAPIKey + "&units=imperial";
 
   var requestOptions = {
     method: 'GET',
@@ -72,20 +72,24 @@ async function getFiveDayForecast(cityName) {
 //it also runs the drawing functions, which places the information from the API's onto the document
 async function search() {
 
-  console.log("search is ran");
-  const cityName = searchInputBox.value.trim();
-  var forecastData = await getFiveDayForecast(cityName);
-  console.log(forecastData);
-  drawFiveDayForecast(forecastData.list);
-  var latitudeLongitude = await getLatitudeLongitude(cityName);
+  const queryString = searchInputBox.value.trim();
+
+  var searchResultsHeader = document.getElementById("write-city-name-search-results-here");
+  searchResultsHeader.innerHTML = "Hiking trails near: " + queryString;
+
+  var latitudeLongitude = await getLatitudeLongitude(queryString);
   //console.log(latitudeLongitude.results);
   var latitude = latitudeLongitude.results[0].geometry;
   const { lat, lng } = latitude;
   console.log(latitude);
+
   var trailInfo = await getTrails(lat, lng);
   console.log(trailInfo);
   drawTrailInfo(trailInfo.data);
 
+  var forecastData = await getFiveDayForecast(lat, lng);
+  console.log(forecastData);
+  drawFiveDayForecast(forecastData.list);
 }
 
 //the following function will render the top 3 trails found for the location inputted.
@@ -100,7 +104,7 @@ async function drawTrailInfo(trailsInformation) {
   var trailNumberZeroDifficulty = document.getElementById("hike-0-difficulty");
   trailNumberZeroDifficulty.innerHTML = "Difficulty: " + trailsInformation[0].difficulty;
   var trailNumberZeroDescription = document.getElementById("hike-0-description");
-  trailNumberZeroDescription.innerHTML = "Description: " + trailsInformation[0].description;
+  trailNumberZeroDescription.innerHTML = "Hiker Review: " + trailsInformation[0].description;
   var trailNumberZeroDirections = document.getElementById("hike-0-directions");
   trailNumberZeroDirections.innerHTML = "Directions: " + trailsInformation[0].directions;
 
@@ -111,7 +115,7 @@ async function drawTrailInfo(trailsInformation) {
   var trailNumberOneDifficulty = document.getElementById("hike-1-difficulty");
   trailNumberOneDifficulty.innerHTML = "Difficulty: " + trailsInformation[1].difficulty;
   var trailNumberOneDescription = document.getElementById("hike-1-description");
-  trailNumberOneDescription.innerHTML = "Description: " + trailsInformation[1].description;
+  trailNumberOneDescription.innerHTML = "Hiker Review: " + trailsInformation[1].description;
   var trailNumberOneDirections = document.getElementById("hike-1-directions");
   trailNumberOneDirections.innerHTML = "Directions: " + trailsInformation[1].directions;
 
@@ -122,7 +126,7 @@ async function drawTrailInfo(trailsInformation) {
   var trailNumberTwoDifficulty = document.getElementById("hike-2-difficulty");
   trailNumberTwoDifficulty.innerHTML = "Difficulty: " + trailsInformation[2].difficulty;
   var trailNumberTwoDescription = document.getElementById("hike-2-description");
-  trailNumberTwoDescription.innerHTML = "Description: " + trailsInformation[2].description;
+  trailNumberTwoDescription.innerHTML = "Hiker Review: " + trailsInformation[2].description;
   var trailNumberTwoDirections = document.getElementById("hike-2-directions");
   trailNumberTwoDirections.innerHTML = "Directions: " + trailsInformation[2].directions;
 
@@ -205,10 +209,11 @@ async function drawFiveDayForecast(data) {
 
 }
 
+
 $(document).ready(async function () {
 
   searchButton.addEventListener('click', search);
-  searchInputBox.value = "Denver";
+  searchInputBox.value = "Denver, CO, USA";
   search();
 
 });

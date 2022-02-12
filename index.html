@@ -18,7 +18,7 @@
       </p>
       <p class="subtitle">
         Search for you favorite city below and find current weather conditions, a five-day forecast, and
-        detailed information about your hiking and biking trails in that area. Be prepared for your adventure into the
+        detailed information about hiking and biking trails in that area. Be prepared for your adventure into the
         great outdoors!
       </p>
     </div>
@@ -27,7 +27,7 @@
   <section class="light_outdoors">
     <div class="hero-body">
       <!-- padding for input here to make it so that the input and search button have space in between them. I think Lindsey did this on the last project example attempt -->
-      <input class="input is-medium" id="input-box" type="text">
+      <input class="input is-medium" id="input-box" type="text" placeholder = "city name">
       <button class="button is-medium" id="search_button">Search</button>
     </div>
 
@@ -37,30 +37,29 @@
   <section class="hero is-small is-info">
     <div class="inspire hero-body light_outdoors">
       <img src="./assets/rocky.jpeg" id="Landscape" alt="Landscape of Mountains">
-      <p class="title">
+      <p class="title" id="write-city-name-search-results-here">
         "There are no words that can tell the hidden spirit of the wilderness, that can reveal its mystery, its
         melancholy, and its charm."
       </p>
-      <p class="subtitle">
+      <p class="subtitle" id = "overwrite-to-blank">
         -Theodore Roosevelt
       </p>
 
     <div class="columns">
 
       <div class="column">
-        <div class="card equal-height">
+        <div class="card equal-height trail-colors">
           <div class="card-content">
             <div class="content">
-              <ul>
-                <li id="hike-0-name"></li>
+                <p id="hike-0-name"></p>
                 </br>
-                <li id="hike-0-length"></li>
+                <p id="hike-0-length"></p>
                 </br>
-                <li id="hike-0-difficulty"></li>
+                <p id="hike-0-difficulty"></p>
                 </br>
-                <li id="hike-0-description"></li>
+                <p id="hike-0-description"></p>
                 </br>
-                <li id="hike-0-directions"></li>
+                <p id="hike-0-directions"></p>
             </div>
           </div>
         </div>
@@ -68,38 +67,36 @@
 
 
       <div class="column">
-        <div class="card equal-height">
+        <div class="card equal-height trail-colors">
           <div class="card-content">
             <div class="content">
-              <ul>
-                <li id="hike-1-name"></li>
+                <p id="hike-1-name"></p>
                 </br>
-                <li id="hike-1-length"></li>
+                <p id="hike-1-length"></p>
                 </br>
-                <li id="hike-1-difficulty"></li>
+                <p id="hike-1-difficulty"></p>
                 </br>
-                <li id="hike-1-description"></li>
+                <p id="hike-1-description"></p>
                 </br>
-                <li id="hike-1-directions"></li>
+                <p id="hike-1-directions"></p>
             </div>
           </div>
         </div>
       </div>
 
       <div class="column">
-        <div class="card equal-height">
+        <div class="card equal-height trail-colors">
           <div class="card-content">
             <div class="content">
-              <ul>
-                <li id="hike-2-name"></li>
+                <p id="hike-2-name"></p>
                 </br>
-                <li id="hike-2-length"></li>
+                <p id="hike-2-length"></p>
                 </br>
-                <li id="hike-2-difficulty"></li>
+                <p id="hike-2-difficulty"></p>
                 </br>
-                <li id="hike-2-description"></li>
+                <p id="hike-2-description"></p>
                 </br>
-                <li id="hike-2-directions"></li>
+                <p id="hike-2-directions"></p>
             </div>
           </div>
         </div>
@@ -118,10 +115,10 @@
   </section>
 
   <!-- five day forecast-->
-  <div class="columns">
+  <div class="columns light_outdoors">
 
     <div class="column">
-      <div class="card">
+      <div class="card trail-colors">
         <div class="card-content">
           <div class="content">
             <h1 id="day-0-date">Date</h1>
@@ -136,7 +133,7 @@
     </div>
 
     <div class="column">
-      <div class="card">
+      <div class="card trail-colors">
         <div class="card-content">
           <div class="content">
             <h1 id="day-1-date">Date</h1>
@@ -151,7 +148,7 @@
     </div>
 
     <div class="column">
-      <div class="card">
+      <div class="card trail-colors">
         <div class="card-content">
           <div class="content">
             <h1 id="day-2-date">Date</h1>
@@ -166,7 +163,7 @@
     </div>
 
     <div class="column">
-      <div class="card">
+      <div class="card trail-colors">
         <div class="card-content">
           <div class="content">
             <h1 id="day-3-date">Date</h1>
@@ -181,7 +178,7 @@
     </div>
 
     <div class="column">
-      <div class="card">
+      <div class="card trail-colors">
         <div class="card-content">
           <div class="content">
             <h1 id="day-4-date">Date</h1>
