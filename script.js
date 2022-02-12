@@ -75,6 +75,11 @@ async function search() {
   console.log("search is ran");
   const cityName = searchInputBox.value.trim();
   var forecastData = await getFiveDayForecast(cityName);
+  //showElem();
+  var searchResultsHeader = document.getElementById("write-city-name-search-results-here");
+  searchResultsHeader.innerHTML = "Hiking trails near: " + cityName;
+  var overwriteAuthorName = document.getElementById("overwrite-to-blank");
+  overwriteAuthorName.innerHTML = "";
   console.log(forecastData);
   drawFiveDayForecast(forecastData.list);
   var latitudeLongitude = await getLatitudeLongitude(cityName);
@@ -100,7 +105,7 @@ async function drawTrailInfo(trailsInformation) {
   var trailNumberZeroDifficulty = document.getElementById("hike-0-difficulty");
   trailNumberZeroDifficulty.innerHTML = "Difficulty: " + trailsInformation[0].difficulty;
   var trailNumberZeroDescription = document.getElementById("hike-0-description");
-  trailNumberZeroDescription.innerHTML = "Description: " + trailsInformation[0].description;
+  trailNumberZeroDescription.innerHTML = "Hiker Review: " + trailsInformation[0].description;
   var trailNumberZeroDirections = document.getElementById("hike-0-directions");
   trailNumberZeroDirections.innerHTML = "Directions: " + trailsInformation[0].directions;
 
@@ -111,7 +116,7 @@ async function drawTrailInfo(trailsInformation) {
   var trailNumberOneDifficulty = document.getElementById("hike-1-difficulty");
   trailNumberOneDifficulty.innerHTML = "Difficulty: " + trailsInformation[1].difficulty;
   var trailNumberOneDescription = document.getElementById("hike-1-description");
-  trailNumberOneDescription.innerHTML = "Description: " + trailsInformation[1].description;
+  trailNumberOneDescription.innerHTML = "Hiker Review: " + trailsInformation[1].description;
   var trailNumberOneDirections = document.getElementById("hike-1-directions");
   trailNumberOneDirections.innerHTML = "Directions: " + trailsInformation[1].directions;
 
@@ -122,7 +127,7 @@ async function drawTrailInfo(trailsInformation) {
   var trailNumberTwoDifficulty = document.getElementById("hike-2-difficulty");
   trailNumberTwoDifficulty.innerHTML = "Difficulty: " + trailsInformation[2].difficulty;
   var trailNumberTwoDescription = document.getElementById("hike-2-description");
-  trailNumberTwoDescription.innerHTML = "Description: " + trailsInformation[2].description;
+  trailNumberTwoDescription.innerHTML = "Hiker Review: " + trailsInformation[2].description;
   var trailNumberTwoDirections = document.getElementById("hike-2-directions");
   trailNumberTwoDirections.innerHTML = "Directions: " + trailsInformation[2].directions;
 
@@ -205,8 +210,18 @@ async function drawFiveDayForecast(data) {
 
 }
 
+//functions to hide elements until search is ran with the click
+// function hideElem() {
+//   document.getElementById("hidden-info").style.visibility = "hidden";
+// }
+
+// function showElem() {
+//   document.getElementById("hidden-info").style.visibility = "visible";
+// }
+
 $(document).ready(async function () {
 
+  //hideElem();
   searchButton.addEventListener('click', search);
   searchInputBox.value = "Denver";
   search();
