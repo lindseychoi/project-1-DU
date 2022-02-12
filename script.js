@@ -35,9 +35,9 @@ async function getTrails(latitude, longitude) {
 
 //Open Cage API changes the city name to latitude and longitude, which was necessary for the Trail API.
 // TODO: In the future, we would like to narrow the search down to use state, country as parameters so that user gets the information for the exact location they want.
-async function getLatitudeLongitude(city) {
+async function getLatitudeLongitude(queryString) {
 
-  var url = "https://api.opencagedata.com/geocode/v1/json?q=" + city + "&key=" + openCageAPIKey;
+  var url = "https://api.opencagedata.com/geocode/v1/json?q=" + queryString + "&key=" + openCageAPIKey;
   //console.log();
   var requestOptions = {
     method: 'GET',
@@ -51,9 +51,9 @@ async function getLatitudeLongitude(city) {
 }
 
 //5 day weather forecast from Open Weather, calls by city name.
-async function getFiveDayForecast(cityName) {
+async function getFiveDayForecast(lat, long) {
 
-  var url = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + openWeatherAPIKey + "&units=imperial";
+  var url = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + long + "&appid=" + openWeatherAPIKey + "&units=imperial";
 
   var requestOptions = {
     method: 'GET',
@@ -72,25 +72,24 @@ async function getFiveDayForecast(cityName) {
 //it also runs the drawing functions, which places the information from the API's onto the document
 async function search() {
 
-  console.log("search is ran");
-  const cityName = searchInputBox.value.trim();
-  var forecastData = await getFiveDayForecast(cityName);
-  //showElem();
+  const queryString = searchInputBox.value.trim();
+
   var searchResultsHeader = document.getElementById("write-city-name-search-results-here");
-  searchResultsHeader.innerHTML = "Hiking trails near: " + cityName;
-  var overwriteAuthorName = document.getElementById("overwrite-to-blank");
-  overwriteAuthorName.innerHTML = "";
-  console.log(forecastData);
-  drawFiveDayForecast(forecastData.list);
-  var latitudeLongitude = await getLatitudeLongitude(cityName);
+  searchResultsHeader.innerHTML = "Hiking trails near: " + queryString;
+
+  var latitudeLongitude = await getLatitudeLongitude(queryString);
   //console.log(latitudeLongitude.results);
   var latitude = latitudeLongitude.results[0].geometry;
   const { lat, lng } = latitude;
   console.log(latitude);
+
   var trailInfo = await getTrails(lat, lng);
   console.log(trailInfo);
   drawTrailInfo(trailInfo.data);
 
+  var forecastData = await getFiveDayForecast(lat, lng);
+  console.log(forecastData);
+  drawFiveDayForecast(forecastData.list);
 }
 
 //the following function will render the top 3 trails found for the location inputted.
@@ -210,20 +209,11 @@ async function drawFiveDayForecast(data) {
 
 }
 
-//functions to hide elements until search is ran with the click
-// function hideElem() {
-//   document.getElementById("hidden-info").style.visibility = "hidden";
-// }
-
-// function showElem() {
-//   document.getElementById("hidden-info").style.visibility = "visible";
-// }
 
 $(document).ready(async function () {
 
-  //hideElem();
   searchButton.addEventListener('click', search);
-  searchInputBox.value = "Denver";
+  searchInputBox.value = "Denver, CO, USA";
   search();
 
 });
