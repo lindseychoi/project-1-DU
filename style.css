@@ -77,11 +77,11 @@
 }
 
 .outdoors {
-    background-color: rgb(243, 243, 245);
+    background-color: rgb(46, 75, 46);
 }
 
 .light_outdoors {
-    background-color: rgb(197, 197, 211);
+    background-color: rgb(104, 134, 104);
     font-size: medium;
 }
 
@@ -98,5 +98,5 @@
 }
 
 .trail-colors {
-  background-color: rgb(243, 243, 245);
+  background-color: rgb(163, 189, 163);
 }

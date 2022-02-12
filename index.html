@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<!-- Links to bulma stylesheet, CSS, and website name -->
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   <link rel="stylesheet" href="./style.css">
-  <title>PROJECT 1</title>
+  <title>Take a Hike!</title>
 </head>
-
+<!-- Body -->
 <body>
+  <!-- First section header content-->
   <section class="hero outdoors">
     <div class="hero-body">
       <p class="title">
@@ -23,21 +24,24 @@
       </p>
     </div>
   </section>
-  <!-- This section is blue -->
+  <!-- Search section -->
   <section class="light_outdoors">
     <div class="hero-body">
-      <!-- padding for input here to make it so that the input and search button have space in between them. I think Lindsey did this on the last project example attempt -->
-      <input class="input is-medium" id="input-box" type="text" placeholder = "city name">
+      <!-- Search input box -->
+      <input class="input is-medium" id="input-box" type="text" placeholder = "city, country...">
+      <!-- Search button -->
       <button class="button is-medium" id="search_button">Search</button>
     </div>
 
   </section>
 
-  <!-- This section is also blue -->
+  <!-- Section with photo and quote -->
   <section class="hero is-small is-info">
     <div class="inspire hero-body light_outdoors">
+      <!-- Mountain image -->
       <img src="./assets/rocky.jpeg" id="Landscape" alt="Landscape of Mountains">
       <p class="title">
+        <!-- Quote and author -->
         "There are no words that can tell the hidden spirit of the wilderness, that can reveal its mystery, its
         melancholy, and its charm."
       </p>
@@ -46,12 +50,14 @@
       </p>
       <div class="subtitle" id="write-city-name-search-results-here"></div>
 
+    <!-- Card 1 for hike -->
     <div class="columns">
 
       <div class="column">
         <div class="card equal-height trail-colors">
           <div class="card-content">
             <div class="content">
+              <!-- Hiking information here -->
                 <p id="hike-0-name"></p>
                 </br>
                 <p id="hike-0-length"></p>
@@ -66,37 +72,52 @@
         </div>
       </div>
 
-
+      <!-- Card 2 for hike -->
       <div class="column">
+        <!-- Card with colors -->
         <div class="card equal-height trail-colors">
           <div class="card-content">
             <div class="content">
+              <!-- Hiking information here -->
+              <!-- Name of Hike -->
                 <p id="hike-1-name"></p>
                 </br>
+                <!-- Length of Hike -->
                 <p id="hike-1-length"></p>
                 </br>
+                <!-- Difficulty of Hike -->
                 <p id="hike-1-difficulty"></p>
                 </br>
+                <!-- Description of Hike -->
                 <p id="hike-1-description"></p>
                 </br>
+                <!-- Directions to Hike -->
                 <p id="hike-1-directions"></p>
             </div>
           </div>
         </div>
       </div>
-
+      
+      <!-- Card 3 for hike -->
       <div class="column">
+        <!-- Card with colors -->
         <div class="card equal-height trail-colors">
           <div class="card-content">
             <div class="content">
+              <!-- Hiking information here -->
+              <!-- Name of Hike -->
                 <p id="hike-2-name"></p>
                 </br>
+                 <!-- Length of Hike -->
                 <p id="hike-2-length"></p>
                 </br>
+                <!-- Difficulty of Hike -->
                 <p id="hike-2-difficulty"></p>
                 </br>
+                <!-- Description of Hike -->
                 <p id="hike-2-description"></p>
                 </br>
+                <!-- Directions to Hike -->
                 <p id="hike-2-directions"></p>
             </div>
           </div>
@@ -115,13 +136,14 @@
     </div>
   </section>
 
-  <!-- five day forecast-->
+  <!-- five day forecast card 1-->
   <div class="columns light_outdoors">
-
     <div class="column">
+      <!-- Colors for card -->
       <div class="card trail-colors">
         <div class="card-content">
           <div class="content">
+            <!-- Forecast 1 content -->
             <h1 id="day-0-date">Date</h1>
             <ul>
               <li id="day-0-icon">Description:</li>
@@ -132,9 +154,11 @@
         </div>
       </div>
     </div>
-
+    <!-- five day forecast card 2-->
     <div class="column">
+      <!-- Colors for card -->
       <div class="card trail-colors">
+        <!-- Forecast 2 content -->
         <div class="card-content">
           <div class="content">
             <h1 id="day-1-date">Date</h1>
@@ -147,9 +171,11 @@
         </div>
       </div>
     </div>
-
+    <!-- five day forecast card 3-->
     <div class="column">
+      <!-- Colors for card -->
       <div class="card trail-colors">
+        <!-- Forecast 3 content -->
         <div class="card-content">
           <div class="content">
             <h1 id="day-2-date">Date</h1>
@@ -162,9 +188,11 @@
         </div>
       </div>
     </div>
-
+    <!-- five day forecast card 4-->
     <div class="column">
+      <!-- Colors for card -->
       <div class="card trail-colors">
+        <!-- Forecast 4 content -->
         <div class="card-content">
           <div class="content">
             <h1 id="day-3-date">Date</h1>
@@ -177,9 +205,11 @@
         </div>
       </div>
     </div>
-
+    <!-- five day forecast card 5-->
     <div class="column">
+      <!-- Colors for card -->
       <div class="card trail-colors">
+        <!-- Forecast 5 content -->
         <div class="card-content">
           <div class="content">
             <h1 id="day-4-date">Date</h1>
@@ -198,7 +228,7 @@
 
 
 
-
+  <!-- Links jquery and javascript -->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
