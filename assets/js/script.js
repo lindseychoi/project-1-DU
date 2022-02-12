@@ -5,6 +5,8 @@ const userLocation = document.querySelector('#input');
 const openWeatherAPIKey = "61bd5a7935f37e9c18cacd14e8c89bc3";
 const openCageAPIKey = "0148c7965c584dfc849607c4be6c640b";
 const trailApiKey = "d0940ee964msh728cc5d9f2642bap1a36ccjsne2e0b86173ec";
+var searchHistoryKey = "Queries";    // key for localstorage to store previous locations searched
+var historybtn = document.getElementById("search-history");
 
 
 //API FUNCTIONS//////////////////////////////////////////////////////////////////////////////////////
@@ -89,6 +91,11 @@ async function search() {
   var forecastData = await getFiveDayForecast(lat, lng);
   console.log(forecastData);
   drawFiveDayForecast(forecastData.list);
+
+  //local storage testing
+  storeSearchHistory(queryString);
+  renderSearchHistoryList();
+
 }
 
 //the following function will render the top 3 trails found for the location inputted.
@@ -208,13 +215,104 @@ async function drawFiveDayForecast(data) {
 
 }
 
+//function to get local storage 
+function retrieveSearchHistory() {
+
+  return JSON.parse(localStorage.getItem(searchHistoryKey));
+
+}
+
+//function to set local storage
+function storeSearchHistory(historyValueToStore) {
+
+  console.log("storeSearchHistory is working: " + historyValueToStore);
+
+  if (!historyValueToStore) {
+    alert("Enter city, state, country. Try again.");
+    return;
+  }
+
+
+  var previousQuery = JSON.parse(localStorage.getItem(searchHistoryKey));
+
+  if (!previousQuery) {
+    previousQuery = [];
+  }
+
+  if (previousQuery.length >= 1) {
+    if (previousQuery.indexOf(historyValueToStore) >= 0) {
+      return
+    }
+  }
+
+  previousQuery.push(historyValueToStore);
+  localStorage.setItem(searchHistoryKey, JSON.stringify(previousQuery));
+  console.log("This is the list for " + previousQuery);
+}
+
+//function to draw the search history from local storage
+function renderSearchHistoryList() {
+
+  historybtn.innerHTML = "";
+  
+  var previousQueries = retrieveSearchHistory();
+
+  if (!previousQueries) {
+    return
+  }
+
+  var searchHistoryBox = document.getElementById("search-history");
+  var searchHistory;
+  var newButton;
+
+  for (let index = 0; index < previousQueries.length; index++) {
+    searchHistory = previousQueries[index];
+    newButton = document.createElement("button");
+    newButton.textContent = searchHistory;
+    newButton.className = "button is-medium";
+    searchHistoryBox.appendChild(newButton);
+  }
+}
+
+function searchQueryAgain(event) {
+  return function () {
+    console.log(event.target);
+    //searchInputBox.value = searchCriteria;
+    search();
+  }
+}
 
 $(document).ready(async function () {
 
   searchButton.addEventListener('click', search);
+  renderSearchHistoryList();
   searchInputBox.value = "Denver, CO, USA";
   search();
 
-});
+  historybtn.addEventListener("click", async function (event) {
+    console.log(event.target.textContent);
+    const queryString = event.target.textContent;
+
+    var searchResultsHeader = document.getElementById("write-city-name-search-results-here");
+    searchResultsHeader.innerHTML = "Hiking trails near: " + queryString;
+
+    var latitudeLongitude = await getLatitudeLongitude(queryString);
+    console.log(latitudeLongitude);
+    var latitude = latitudeLongitude.results[0].geometry;
+    const { lat, lng } = latitude;
+    console.log(latitude);
+
+    var trailInfo = await getTrails(lat, lng);
+    console.log(trailInfo);
+    drawTrailInfo(trailInfo.data);
+
+    var forecastData = await getFiveDayForecast(lat, lng);
+    console.log(forecastData);
+    drawFiveDayForecast(forecastData.list);
+  })
+})
+
+
+
 
 
