@@ -217,5 +217,3 @@ $(document).ready(async function () {
   search();
 
 });
-
-
