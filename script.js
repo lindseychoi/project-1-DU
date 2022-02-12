@@ -28,6 +28,7 @@ async function getTrails(latitude, longitude) {
   }
 
   var response = await fetch(url, requestOptions);
+  console.log(response);
   return await response.json();
 
 }

@@ -89,3 +89,9 @@
     height: 400px;
     position: relative;
   }
+
+.equal-height {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
