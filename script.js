@@ -34,7 +34,6 @@ async function getTrails(latitude, longitude) {
 }
 
 //Open Cage API changes the city name to latitude and longitude, which was necessary for the Trail API.
-// TODO: In the future, we would like to narrow the search down to use state, country as parameters so that user gets the information for the exact location they want.
 async function getLatitudeLongitude(queryString) {
 
   var url = "https://api.opencagedata.com/geocode/v1/json?q=" + queryString + "&key=" + openCageAPIKey;

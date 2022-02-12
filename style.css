@@ -4,7 +4,7 @@
     display: inline-flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-around;
+    /*justify-content: start;*/
 
 }
 
@@ -100,3 +100,8 @@
 .trail-colors {
   background-color: rgb(163, 189, 163);
 }
+
+.text-equal-height {
+  vertical-align: top;
+}
+
