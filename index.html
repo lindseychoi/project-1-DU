@@ -1,42 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Links to bulma stylesheet, CSS, and website name -->
+<!-- Head section including links to bulma stylesheet, CSS, and website name -->
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   <link rel="stylesheet" href="./style.css">
+  <!-- Website title -->
   <title>Take a Hike!</title>
+  <!-- End of head section -->
 </head>
+
 <!-- Body -->
 <body>
   <!-- First section header content-->
   <section class="hero outdoors">
+    <!-- Body text in the hero outdoors section -->
     <div class="hero-body">
+      <!-- Body title paragraph for hero outdoors section-->
       <p class="title">
         Take A Hike!
       </p>
+      <!-- Paragraph -->
       <p class="subtitle">
         Search for you favorite city below and find current weather conditions, a five-day forecast, and
         detailed information about hiking and biking trails in that area. Be prepared for your adventure into the
         great outdoors!
       </p>
+      <!-- End of hero-body div -->
     </div>
+    <!-- End of hero outdoors section -->
   </section>
-  <!-- Search section -->
+
+  <!-- light_outdoors section -->
   <section class="light_outdoors">
+    <!-- Body section to hold search input and search button -->
     <div class="hero-body">
       <!-- Search input box -->
       <input class="input is-medium" id="input-box" type="text" placeholder = "city, country...">
       <!-- Search button -->
       <button class="button is-medium" id="search_button">Search</button>
+      <!-- End of hero body div -->
     </div>
-
+  <!-- End of light_outdoors section -->
   </section>
 
-  <!-- Section with photo and quote -->
+  <!-- Section that hold mountain photo, hiking information cards, 5 day forecast title elements and 5 day forecast cards and associated divs-->
   <section class="hero is-small is-info">
+    <!-- Div that holds mountain photo, hiking information cards and 5 day forecast title -->
     <div class="inspire hero-body light_outdoors">
       <!-- Mountain image -->
       <img src="./assets/rocky.jpeg" id="Landscape" alt="Landscape of Mountains">
@@ -50,81 +62,106 @@
       </p>
       <div class="subtitle" id="write-city-name-search-results-here"></div>
 
-    <!-- Card 1 for hike -->
+    <!-- Column to organize hiking cards -->
     <div class="columns">
-
+      <!-- Card 1 for hike -->
       <div class="column">
+        <!-- card size and trail colors -->
         <div class="card equal-height trail-colors">
+          <!-- container that organizes card content  -->
           <div class="card-content">
+            <!-- div that holds actual content of card -->
             <div class="content">
               <!-- Hiking information here -->
+              <!-- trail name -->
                 <p id="hike-0-name"></p>
                 </br>
+                <!-- length -->
                 <p id="hike-0-length"></p>
                 </br>
+                <!-- difficulty -->
                 <p id="hike-0-difficulty"></p>
                 </br>
+                <!-- Hiker Review -->
                 <p id="hike-0-description"></p>
                 </br>
+                <!-- Directions -->
                 <p id="hike-0-directions"></p>
+                <!-- End of content div -->
             </div>
+            <!-- End of card-content div -->
           </div>
+          <!-- end of card equal-height trail-colors div -->
         </div>
+        <!-- End of column div -->
       </div>
 
       <!-- Card 2 for hike -->
       <div class="column">
-        <!-- Card with colors -->
+        <!-- Card size and trail colors -->
         <div class="card equal-height trail-colors">
+          <!-- container that organizes card content -->
           <div class="card-content">
+            <!-- div that holds actual content of card -->
             <div class="content">
               <!-- Hiking information here -->
-              <!-- Name of Hike -->
+              <!-- trail name -->
                 <p id="hike-1-name"></p>
                 </br>
-                <!-- Length of Hike -->
+                <!-- length -->
                 <p id="hike-1-length"></p>
                 </br>
-                <!-- Difficulty of Hike -->
+                <!-- difficulty -->
                 <p id="hike-1-difficulty"></p>
                 </br>
-                <!-- Description of Hike -->
+                <!-- Hiker Review -->
                 <p id="hike-1-description"></p>
                 </br>
-                <!-- Directions to Hike -->
+                <!-- directions -->
                 <p id="hike-1-directions"></p>
+                <!-- End of content div -->
             </div>
+            <!-- end of card-content div -->
           </div>
+          <!-- end of card equal-height trail-colors div -->
         </div>
+        <!-- end of column div -->
       </div>
       
       <!-- Card 3 for hike -->
       <div class="column">
-        <!-- Card with colors -->
+        <!-- card size and trail colors -->
         <div class="card equal-height trail-colors">
+          <!-- container that organizes card content -->
           <div class="card-content">
+            <!-- div that holds actual content of card -->
             <div class="content">
               <!-- Hiking information here -->
               <!-- Name of Hike -->
                 <p id="hike-2-name"></p>
                 </br>
-                 <!-- Length of Hike -->
+                 <!-- length -->
                 <p id="hike-2-length"></p>
                 </br>
-                <!-- Difficulty of Hike -->
+                <!-- difficulty -->
                 <p id="hike-2-difficulty"></p>
                 </br>
-                <!-- Description of Hike -->
+                <!-- Hiker Review -->
                 <p id="hike-2-description"></p>
                 </br>
-                <!-- Directions to Hike -->
+                <!-- Directions -->
                 <p id="hike-2-directions"></p>
+                <!-- End of content div -->
             </div>
+            <!-- End of card-content div -->
           </div>
+          <!-- End of card equal-height trail-colors div -->
         </div>
+        <!-- End of column div -->
       </div>
-
+      <!--End of columns div  -->
     </div>
+    <!-- End of hero is-small is-info section-->
   </section>
 
   <!-- Results and 5 day forecast -->
@@ -136,97 +173,147 @@
     </div>
   </section>
 
-  <!-- five day forecast card 1-->
+  <!-- Column light_outdoors div holds all 5 day forecast cards-->
   <div class="columns light_outdoors">
+    <!-- div class column holds Forecast card 1 -->
     <div class="column">
-      <!-- Colors for card -->
+      <!-- Main card container and custom trail_colors for card -->
       <div class="card trail-colors">
+        <!-- Div card-content that holds entire container of card -->
         <div class="card-content">
+          <!-- Div card-content that holds text of card -->
           <div class="content">
             <!-- Forecast 1 content -->
+            <!-- Forecast 1 header -->
             <h1 id="day-0-date">Date</h1>
             <ul>
+              <!-- List items for forecast 1 metrics -->
               <li id="day-0-icon">Description:</li>
               <li id="day-0-temp">Temp:</li>
               <li id="day-0-wind">Wind:</li>
               <li id="day-0-humidity">Humidity:</li>
+              <!-- End of unordered list -->
+            </ul>
+              <!-- End of div class="content" -->
           </div>
+          <!-- end of div class="card-content" -->
         </div>
+        <!-- End of div class="card trail-colors" -->
       </div>
+      <!-- End of div class="column" -->
     </div>
-    <!-- five day forecast card 2-->
+
+    <!-- div class column holds Forecast card 2 -->
     <div class="column">
-      <!-- Colors for card -->
+       <!-- Main card container and custom trail_colors for card -->
       <div class="card trail-colors">
-        <!-- Forecast 2 content -->
+        <!-- Div card-content that holds entire container of card -->
         <div class="card-content">
+          <!-- Div card-content that holds text of card -->
           <div class="content">
+            <!-- Forecast 2 content -->
+            <!-- Forecast 2 header -->
             <h1 id="day-1-date">Date</h1>
+            <!-- Unordered List -->
             <ul>
+              <!-- List items for forecast 1 metrics -->
               <li id="day-1-icon">Description:</li>
               <li id="day-1-temp">Temp:</li>
               <li id="day-1-wind">Wind:</li>
               <li id="day-1-humidity">Humidity:</li>
+              <!-- End of unordered list -->
+              </ul>
+              <!-- End of div class="content" -->
           </div>
+          <!-- end of div class="card-content" -->
         </div>
+        <!-- End of div class="card trail-colors" -->
       </div>
+      <!-- End of div class="column" -->
     </div>
-    <!-- five day forecast card 3-->
+    
+    <!-- div class column holds Forecast card 3 -->
     <div class="column">
-      <!-- Colors for card -->
+      <!-- Main card container and custom trail_colors for card -->
       <div class="card trail-colors">
-        <!-- Forecast 3 content -->
+        <!-- Div card-content that holds entire container of card -->
         <div class="card-content">
+           <!-- Div card-content that holds text of card -->
           <div class="content">
+            <!-- Forecast 3 content -->
+            <!-- Forecast 3 header -->
             <h1 id="day-2-date">Date</h1>
             <ul>
               <li id="day-2-icon">Description:</li>
               <li id="day-2-temp">Temp:</li>
               <li id="day-2-wind">Wind:</li>
               <li id="day-2-humidity">Humidity:</li>
+              <!-- End of unordered list -->
+              </ul>
+              <!-- End of div class="content" -->
           </div>
+          <!-- end of div class="card-content" -->
         </div>
+        <!-- End of div class="card trail-colors" -->
       </div>
+      <!-- End of div class="column" -->
     </div>
-    <!-- five day forecast card 4-->
+
+    <!-- div class column holds Forecast card 4 -->
     <div class="column">
-      <!-- Colors for card -->
+      <!-- Main card container and custom trail_colors for card -->
       <div class="card trail-colors">
-        <!-- Forecast 4 content -->
+        <!-- Div card-content that holds entire container of card -->
         <div class="card-content">
+           <!-- Div card-content that holds text of card -->
           <div class="content">
+            <!-- Forecast 4 content -->
+            <!-- Forecast 4 header -->
             <h1 id="day-3-date">Date</h1>
             <ul>
               <li id="day-3-icon">Description:</li>
               <li id="day-3-temp">Temp:</li>
               <li id="day-3-wind">Wind:</li>
               <li id="day-3-humidity">Humidity:</li>
+              <!-- End of unordered list -->
+              </ul>
+              <!-- End of div class="content" -->
           </div>
+          <!-- end of div class="card-content" -->
         </div>
+        <!-- End of div class="card trail-colors" -->
       </div>
+      <!-- End of div class="column" -->
     </div>
-    <!-- five day forecast card 5-->
+
+    <!-- div class column holds Forecast card 5 -->
     <div class="column">
-      <!-- Colors for card -->
+      <!-- Main card container and custom trail_colors for card -->
       <div class="card trail-colors">
-        <!-- Forecast 5 content -->
+        <!-- Div card-content that holds entire container of card -->
         <div class="card-content">
+           <!-- Div card-content that holds text of card -->
           <div class="content">
+            <!-- Forecast 5 content -->
+            <!-- Forecast 5 header -->
             <h1 id="day-4-date">Date</h1>
             <ul>
               <li id="day-4-icon">Description:</li>
               <li id="day-4-temp">Temp:</li>
               <li id="day-4-wind">Wind:</li>
               <li id="day-4-humidity">Humidity:</li>
+              <!-- End of unordered list -->
+            </ul>
+            <!-- End of div class="content" -->
           </div>
+          <!-- end of div class="card-content" -->
         </div>
+        <!-- End of div class="card trail-colors" -->
       </div>
+      <!-- End of div class="column" -->
     </div>
-
+    <!-- End of div class="columns light_outdoors" -->
   </div>
-
-
-
 
   <!-- Links jquery and javascript -->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
@@ -234,6 +321,7 @@
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="./script.js"></script>
+  <!-- End of body -->
 </body>
-
+<!-- End of HTML -->
 </html>
