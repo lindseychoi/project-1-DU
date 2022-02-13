@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<!-- Head section including links to bulma stylesheet, CSS, and website title -->
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,6 +11,7 @@
 </head>
 
 <body>
+  <!-- First section page header content-->
   <section class="hero outdoors">
     <div class="hero-body">
       <p class="title">
@@ -23,18 +24,19 @@
       </p>
     </div>
   </section>
-  <!-- This section is blue -->
+  <!-- End of First section header content-->
+
+  <!-- light_outdoors section which includes search input and search button-->
   <section class="light_outdoors">
     <div class="hero-body">
-      <!-- padding for input here to make it so that the input and search button have space in between them. I think Lindsey did this on the last project example attempt -->
       <input class="input is-medium" id="input-box" type="text" placeholder = "city name">
       <button class="button is-medium" id="search_button">Search</button>
       <div id="search-history"></div>
     </div>
-
   </section>
+  <!-- End of light_outdoors section -->
 
-  <!-- This section is also blue -->
+  <!-- Section that hold mountain photo and hiking information cards-->
   <section class="hero is-small is-info">
 
     <div class="inspire hero-body light_outdoors">
@@ -48,12 +50,14 @@
       </p>
       <div class="subtitle" id="write-city-name-search-results-here"></div>
 
+      <!-- Column to organize all 5 hiking cards -->
     <div class="columns">
-
+      <!-- Card 1 for hike -->
       <div class="column">
         <div class="card equal-height trail-colors">
           <div class="card-content text-equal-height">
             <div class="content">
+              <!-- Hiking information here -->
                 <p id="hike-0-name"></p>
                 </br>
                 <p id="hike-0-length"></p>
@@ -67,12 +71,14 @@
           </div>
         </div>
       </div>
+      <!-- End of card 1 -->
 
-
+      <!-- Card 2 for hike -->
       <div class="column">
         <div class="card equal-height trail-colors">
           <div class="card-content text-equal-height">
             <div class="content">
+              <!-- Hiking information here -->
                 <p id="hike-1-name"></p>
                 </br>
                 <p id="hike-1-length"></p>
@@ -86,7 +92,9 @@
           </div>
         </div>
       </div>
+      <!-- End of Card 2 for hike -->
 
+      <!-- Card 3 for hike -->
       <div class="column">
         <div class="card equal-height trail-colors">
           <div class="card-content text-equal-height">
@@ -107,8 +115,9 @@
 
     </div>
   </section>
+  <!-- End of hiking cards section -->
 
-  <!-- Results and 5 day forecast -->
+   <!-- 5 day forecast title section -->
   <section class="hero is-small light_outdoors">
     <div class="hero-body">
       <p class="title">
@@ -116,10 +125,11 @@
       </p>
     </div>
   </section>
+  <!-- End of 5 day forecast title section -->
 
-  <!-- five day forecast-->
+  <!-- Column light_outdoors div holds all 5 day forecast cards-->
   <div class="columns light_outdoors">
-
+    <!-- div class column holds Forecast card 1 -->
     <div class="column">
       <div class="card trail-colors">
         <div class="card-content">
@@ -134,7 +144,9 @@
         </div>
       </div>
     </div>
+    <!-- End of forecast 1 card -->
 
+    <!-- div class column holds Forecast card 2 -->
     <div class="column">
       <div class="card trail-colors">
         <div class="card-content">
@@ -149,7 +161,9 @@
         </div>
       </div>
     </div>
+    <!-- End of forecast 2 card -->
 
+    <!-- div class column holds Forecast card 3 -->
     <div class="column">
       <div class="card trail-colors">
         <div class="card-content">
@@ -164,7 +178,9 @@
         </div>
       </div>
     </div>
+    <!-- End of forecast 3 card -->
 
+    <!-- div class column holds Forecast card 4 -->
     <div class="column">
       <div class="card trail-colors">
         <div class="card-content">
@@ -179,7 +195,9 @@
         </div>
       </div>
     </div>
+    <!-- End of forecast 4 card -->
 
+    <!-- div class column holds Forecast card 5 -->
     <div class="column">
       <div class="card trail-colors">
         <div class="card-content">
@@ -194,11 +212,10 @@
         </div>
       </div>
     </div>
+    <!-- End of forecast 5 card -->
 
   </div>
-
-
-
+  <!-- End of all containers -->
 
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
