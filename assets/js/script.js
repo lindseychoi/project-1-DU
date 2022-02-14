@@ -136,9 +136,6 @@ async function drawTrailInfo(trailsInformation) {
   var trailNumberTwoDirections = document.getElementById("hike-2-directions");
   trailNumberTwoDirections.innerHTML = "Directions: " + trailsInformation[2].directions;
 
-
-
-
 }
 
 //the following function will render the five day forecast for the searched city on the cards on the HTML page. 
@@ -254,7 +251,7 @@ function storeSearchHistory(historyValueToStore) {
 function renderSearchHistoryList() {
 
   historybtn.innerHTML = "";
-  
+
   var previousQueries = retrieveSearchHistory();
 
   if (!previousQueries) {
@@ -270,15 +267,18 @@ function renderSearchHistoryList() {
     newButton = document.createElement("button");
     newButton.textContent = searchHistory;
     newButton.className = "button is-medium";
+    newButton.addEventListener("click", searchCityAgain(searchHistory));
     searchHistoryBox.appendChild(newButton);
   }
+
 }
 
-function searchQueryAgain(event) {
+// searched city that is in the search history button list
+function searchCityAgain(searchCriteria) {
   return function () {
-    console.log(event.target);
-    //searchInputBox.value = searchCriteria;
-    search();
+
+      searchInputBox.value = searchCriteria;
+      search();
   }
 }
 
@@ -289,28 +289,9 @@ $(document).ready(async function () {
   searchInputBox.value = "Denver, CO, USA";
   search();
 
-  historybtn.addEventListener("click", async function (event) {
-    console.log(event.target.textContent);
-    const queryString = event.target.textContent;
+});
 
-    var searchResultsHeader = document.getElementById("write-city-name-search-results-here");
-    searchResultsHeader.innerHTML = "Hiking trails near: " + queryString;
 
-    var latitudeLongitude = await getLatitudeLongitude(queryString);
-    console.log(latitudeLongitude);
-    var latitude = latitudeLongitude.results[0].geometry;
-    const { lat, lng } = latitude;
-    console.log(latitude);
-
-    var trailInfo = await getTrails(lat, lng);
-    console.log(trailInfo);
-    drawTrailInfo(trailInfo.data);
-
-    var forecastData = await getFiveDayForecast(lat, lng);
-    console.log(forecastData);
-    drawFiveDayForecast(forecastData.list);
-  })
-})
 
 
 
