@@ -105,3 +105,9 @@
   vertical-align: top;
 }
 
+.button {
+  padding: 20px;
+  background-color:rgb(46, 75, 46);
+  color: rgb(172, 185, 175);
+  border: none;
+}
